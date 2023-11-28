@@ -108,8 +108,18 @@ namespace Dictionary{
         }
     }
 
-    export function create(keys: any[], values: any[]){
-        
+    //% block="create Dictionary with keys $list and values $list"
+    //% blockId="dictionary_create"
+    //% blockSetVariable="dictionary"
+    //% group="Create"
+    //% weight=100
+    export function create(Keys: any[], Values: any[]): Dictionary<any[], any[]>{
+        return new Dictionary(Keys, Values);
     }
+
+    export function set(dict: Dictionary<any, any>, Key: any, Value: any){
+        dict.set(Key, Value)
+    }
+
 }
 
