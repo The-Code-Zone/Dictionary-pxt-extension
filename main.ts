@@ -2,7 +2,7 @@
 //% weight=79
 //% icon="\uf240"
 //% blockGap=8 block="Dictionary"
-//% groups='["Create"]'
+//% groups='["Create", "Edit", "Retrieve"]'
 namespace Dictionary{
     
     export class Dictionary<Keys, Values> {
@@ -117,8 +117,28 @@ namespace Dictionary{
         return new Dictionary(Keys, Values);
     }
 
-    export function set(dict: Dictionary<any, any>, Key: any, Value: any){
+    //% block="add key $value and value $value to dictionary $dictionary"
+    //% blockId="dictionary_set"
+    //% group="Edit"
+    //% weight=100
+    export function set_key_value_pair(dict: Dictionary<any, any>, Key: any, Value: any){
         dict.set(Key, Value)
+    }
+
+    //% block="dictionary $dictionary get value at key $value"
+    //% blockId="dictionary_get_value"
+    //% group="Retrieve"
+    //% weight=100
+    export function get_value(dict: Dictionary<any, any>, key: any): any{
+        return dict.getValue(key)
+    }
+
+    //% block="dictionary $dictionary get key with the value $value"
+    //% blockId="dictionary_get_keys_from_value"
+    //% group="Retrieve"
+    //% weight=100
+    export function get_keys_from_value(dict: Dictionary<any, any>, value: any): any[]{
+        return dict.getKey(value)
     }
 
 }
