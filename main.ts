@@ -1,23 +1,29 @@
+/**
+ * Functions are mapped to blocks using various macros
+ * in comments starting with %. The most important macro
+ * is "block", and it specifies that a block should be
+ * generated for an **exported** function.
+ */
 //% color=#e6e6fa
 //% weight=79
 //% icon="\uf240"
 //% blockGap=8 block="Dictionary"
-//% groups='["Create", "Edit", "Retrieve"]'
-namespace Dictionary{
-    
+//% groups='["Create", "Edit", "Retrieve", "String"]'
+namespace Dictionary {
+
     export class Dictionary<Keys, Values> {
         private keys: Keys[]
         private values: Values[]
 
         constructor(keys: Keys[], values: Values[]) {
-            if(this.keys.length === this.values.length){
+            if (this.keys.length === this.values.length) {
                 this.keys = keys
                 this.values = values
             }
-            else if(this.keys.length>this.values.length){
+            else if (this.keys.length > this.values.length) {
                 throw console.error("There are Keys without Values")
             }
-            else{
+            else {
                 throw console.error("There are Values without Keys")
             }
         }
@@ -102,43 +108,99 @@ namespace Dictionary{
             return key + ":" + value
         }
 
-        public clean(){
+        public clean() {
             this.keys = []
             this.values = []
         }
     }
 
-    //% block="create Dictionary with keys $list and values $list"
+    //% block="keys $k and values $v"
     //% blockId="dictionary_create"
     //% blockSetVariable="dictionary"
     //% group="Create"
     //% weight=100
-    export function create(Keys: any[], Values: any[]): Dictionary<any[], any[]>{
-        return new Dictionary(Keys, Values);
+    export function create(k: any[], v: any[]): Dictionary<any[], any[]> {
+        return new Dictionary(k, v);
     }
 
-    //% block="add key $value and value $value to dictionary $dictionary"
+    //% block="$d add key $k and value $v"
     //% blockId="dictionary_set"
     //% group="Edit"
     //% weight=100
-    export function set_key_value_pair(dict: Dictionary<any, any>, Key: any, Value: any){
-        dict.set(Key, Value)
+    export function set_key_value_pair(d: Dictionary<any[], any[]>, k: any, v: any) {
+        d.set(k, v)
     }
 
-    //% block="dictionary $dictionary get value at key $value"
+    //% block="$d get value at key $k"
     //% blockId="dictionary_get_value"
     //% group="Retrieve"
     //% weight=100
-    export function get_value(dict: Dictionary<any, any>, key: any): any{
-        return dict.getValue(key)
+    export function get_value(d: Dictionary<any[], any[]>, k: any): any {
+        return d.getValue(k)
     }
 
-    //% block="dictionary $dictionary get key with the value $value"
+    //% block="$d get key(s) with the value $v"
     //% blockId="dictionary_get_keys_from_value"
     //% group="Retrieve"
     //% weight=100
-    export function get_keys_from_value(dict: Dictionary<any, any>, value: any): any[]{
-        return dict.getKey(value)
+    export function get_keys_from_value(d: Dictionary<any[], any[]>, v: any): any[] {
+        return d.getKey(v)
+    }
+
+    //% block="%d get values"
+    //% blockId="dictionary_get_values_list"
+    //% group="Retrieve"
+    //% weight=100
+    export function get_values_list(d: Dictionary<any[], any[]>): any[] {
+        return d.get_values_list()
+    }
+
+    //% block="%d get keys"
+    //% blockId="dictionary_get_keys_list"
+    //% group="Retrieve"
+    //% weight=100
+    export function get_keys_list(d: Dictionary<any[], any[]>): any[] {
+        return d.get_keys_list()
+    }
+
+    //% block="%d remove key, value pair %k %v"
+    //% blockId="dictionary_remove"
+    //% group="Edit"
+    //% weight=100
+    export function remove(d: Dictionary<any[], any[]>, k: any, v: any) {
+        d.remove(k, v)
+    }
+
+    //% block="get and remove first key, value pair from %d"
+    //% blockId="dictionary_get_and_remove_first"
+    //% group="Edit"
+    //% weight=100
+    export function remove_first(d: Dictionary<any[], any[]>): any {
+        return d.remove_first()
+    }
+
+    //% block="get and remove last key, value pair from %d"
+    //% blockId="dictionary_get_and_remove_last"
+    //% group="Edit"
+    //% weight=100
+    export function remove_last(d: Dictionary<any[], any[]>): any {
+        return d.remove_last()
+    }
+
+    //% block="converr %d to string"
+    //% blockId="dictionary_to_string"
+    //% group="String"
+    //% weight=100
+    export function toString(d: Dictionary<any[], any[]>): string[] {
+        return d.toString()
+    }
+
+    //% block="convert key, value pair $k $v from $d to string"
+    //% blockId="dictionary_entry_to_string"
+    //% group="String"
+    //% weight=100
+    export function entryToString(d: Dictionary<any[], any[]>, k: any, v: any): string {
+        return d.entryToString(k, v)
     }
 
 }
