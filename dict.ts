@@ -181,7 +181,7 @@ namespace Dictionary {
         return d.remove_last()
     }
 
-    //% block="converr %d to string"
+    //% block="convert %d to string"
     //% blockId="dictionary_to_string"
     //% group="String"
     //% weight=100
