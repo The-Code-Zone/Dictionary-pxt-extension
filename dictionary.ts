@@ -10,6 +10,10 @@ namespace Dictionary {
         private values: Values[]
 
         constructor(keys: Keys[], values: Values[]) {
+            if(keys.length == 0 && values.length == 0){
+                this.keys = []
+                this.values = []
+            }
             if (this.keys.length === this.values.length) {
                 this.keys = keys
                 this.values = values
