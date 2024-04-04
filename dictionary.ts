@@ -107,13 +107,12 @@ namespace Dictionary {
             this.values = []
         }
     }
-
     //% block="keys $k and values $v"
     //% blockId="dictionary_create"
     //% blockSetVariable="dictionary"
     //% group="Create"
     //% weight=100
-    export function create(k: number[], v: number[]): Dictionary<number[], number[]> {
+    export function create(k: any[] = [], v: any[] = []): Dictionary<any[], any[]> {
         return new Dictionary(k, v);
     }
 
