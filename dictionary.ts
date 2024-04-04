@@ -6,15 +6,15 @@
 namespace Dictionary {
 
     export class Dictionary<Keys, Values> {
-        private keys: Keys[]
-        private values: Values[]
+        private keys: any[]
+        private values: any[]
 
-        constructor(keys: Keys[], values: Values[]) {
+        constructor(key: any[], value: any[]) {
             this.keys = []
             this.values = []
             if (this.keys.length === this.values.length) {
-                this.keys = keys
-                this.values = values
+                this.keys = key
+                this.values = value
             }
             else if (this.keys.length > this.values.length) {
                 throw console.error("There are Keys without Values")
