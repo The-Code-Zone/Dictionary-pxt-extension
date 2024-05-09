@@ -5,7 +5,7 @@
 //% groups='["Create", "Edit", "Retrieve", "String"]'
 namespace Dictionary {
 
-    export class Dictionary<Keys, Values> {
+    export class Dictionary {
         private keys: any[]
         private values: any[]
 
@@ -24,7 +24,7 @@ namespace Dictionary {
             }
         }
 
-        public set(key: Keys, value: Values) {
+        public set(key: any, value: any) {
             if (this.keys.indexOf(key) != -1) {
                 this.keys.push(key)
                 this.values.push(value)
@@ -34,19 +34,19 @@ namespace Dictionary {
             }
         }
 
-        public get(): [Keys[], Values[]] {
+        public get(): [any[], any[]] {
             return [this.keys, this.values]
         }
 
-        public get_keys_list(): Keys[] {
+        public get_keys_list(): any[] {
             return this.keys
         }
 
-        public get_values_list(): Values[] {
+        public get_values_list(): any[] {
             return this.values
         }
 
-        public getValue(key: Keys): Values {
+        public getValue(key: any): any{
             if (this.keys.indexOf(key) != -1) {
                 return this.values[this.keys.indexOf(key)]
             }
@@ -55,9 +55,9 @@ namespace Dictionary {
             }
         }
 
-        public getKey(value: Values): Keys[] {
+        public getKey(value: any): any[] {
             if (this.values.indexOf(value) != -1) {
-                let answer: Keys[] = []
+                let answer: any[] = []
                 for (let i = 0; i < this.values.length; i++) {
                     if (value === this.values[i]) {
                         answer.push(this.keys[i])
@@ -70,7 +70,7 @@ namespace Dictionary {
             }
         }
 
-        public remove(key: Keys, value: Values) {
+        public remove(key: any, value: any) {
             if (this.keys.indexOf(key) != -1) {
                 if (this.values[this.keys.indexOf(key)] === value) {
                     this.keys.splice(this.keys.indexOf(key), 1)
@@ -100,7 +100,7 @@ namespace Dictionary {
             return answer
         }
 
-        public entryToString(key: Keys, value: Values): string {
+        public entryToString(key: any, value: any): string {
             return key + ":" + value
         }
 
@@ -114,7 +114,7 @@ namespace Dictionary {
     //% blockSetVariable="dictionary"
     //% group="Create"
     //% weight=100
-    export function create(k: any[] = [], v: any[] = []): Dictionary<any[], any[]> {
+    export function create(k: any[] = [], v: any[] = []): Dictionary {
         return new Dictionary(k, v);
     }
 
@@ -122,7 +122,7 @@ namespace Dictionary {
     //% blockId="dictionary_set"
     //% group="Edit"
     //% weight=100
-    export function set_key_value_pair(d: Dictionary<any[], any[]>, k: any, v: any) {
+    export function set_key_value_pair(d: Dictionary, k: any, v: any) {
         d.set(k, v)
     }
 
@@ -130,7 +130,7 @@ namespace Dictionary {
     //% blockId="dictionary_get_value"
     //% group="Retrieve"
     //% weight=100
-    export function get_value(d: Dictionary<any[], any[]>, k: any): any {
+    export function get_value(d: Dictionary, k: any): any {
         return d.getValue(k)
     }
 
@@ -138,7 +138,7 @@ namespace Dictionary {
     //% blockId="dictionary_get_keys_from_value"
     //% group="Retrieve"
     //% weight=100
-    export function get_keys_from_value(d: Dictionary<any[], any[]>, v: any): any[] {
+    export function get_keys_from_value(d: Dictionary, v: any): any[] {
         return d.getKey(v)
     }
 
@@ -146,7 +146,7 @@ namespace Dictionary {
     //% blockId="dictionary_get_values_list"
     //% group="Retrieve"
     //% weight=100
-    export function get_values_list(d: Dictionary<any[], any[]>): any[] {
+    export function get_values_list(d: Dictionary): any[] {
         return d.get_values_list()
     }
 
@@ -154,7 +154,7 @@ namespace Dictionary {
     //% blockId="dictionary_get_keys_list"
     //% group="Retrieve"
     //% weight=100
-    export function get_keys_list(d: Dictionary<any[], any[]>): any[] {
+    export function get_keys_list(d: Dictionary): any[] {
         return d.get_keys_list()
     }
 
@@ -162,7 +162,7 @@ namespace Dictionary {
     //% blockId="dictionary_remove"
     //% group="Edit"
     //% weight=100
-    export function remove(d: Dictionary<any[], any[]>, k: any, v: any) {
+    export function remove(d: Dictionary, k: any, v: any) {
         d.remove(k, v)
     }
 
@@ -170,7 +170,7 @@ namespace Dictionary {
     //% blockId="dictionary_get_and_remove_first"
     //% group="Edit"
     //% weight=100
-    export function remove_first(d: Dictionary<any[], any[]>): any {
+    export function remove_first(d: Dictionary): any {
         return d.remove_first()
     }
 
@@ -178,7 +178,7 @@ namespace Dictionary {
     //% blockId="dictionary_get_and_remove_last"
     //% group="Edit"
     //% weight=100
-    export function remove_last(d: Dictionary<any[], any[]>): any {
+    export function remove_last(d: Dictionary): any {
         return d.remove_last()
     }
 
@@ -186,7 +186,7 @@ namespace Dictionary {
     //% blockId="dictionary_to_string"
     //% group="String"
     //% weight=100
-    export function toString(d: Dictionary<any[], any[]>): string[] {
+    export function toString(d: Dictionary): string[] {
         return d.toString()
     }
 
@@ -194,7 +194,7 @@ namespace Dictionary {
     //% blockId="dictionary_entry_to_string"
     //% group="String"
     //% weight=100
-    export function entryToString(d: Dictionary<any[], any[]>, k: any, v: any): string {
+    export function entryToString(d: Dictionary, k: any, v: any): string {
         return d.entryToString(k, v)
     }
 
