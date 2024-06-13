@@ -1,5 +1,6 @@
 {
     "name": "dict_ext",
+    "version": "1.0.1",
     "description": "",
     "dependencies": {
         "device": "*"
