@@ -1,5 +1,5 @@
 //% color=#EEBB00
-//% weight=79
+//% weight=10
 //% icon="\uf240"
 //% blockGap=8 block="Dictionary"
 //% groups='["Create", "Edit", "Retrieve", "String"]'
@@ -70,17 +70,17 @@ namespace Dictionary {
             }
         }
 
-        public replaceValue(value: any, newValue: any): void {
-            let index = this.values.indexOf(value);
+        public replaceValue(key: any, newValue: any): void {
+            let index = this.keys.indexOf(key);
             if (index != -1) {
                 this.values[index] = newValue;
             }
         }
 
-        public replaceKey(value: any, newKey: any): void {
-            let index = this.values.indexOf(value);
+        public replaceKey(key: any, newKey: any): void {
+            let index = this.keys.indexOf(key);
             if (index != -1) {
-                this.keys[index] = newKey;
+                this.values[index] = newKey;
             }
         }
 
