@@ -70,6 +70,20 @@ namespace Dictionary {
             }
         }
 
+        public replaceValue(value: any, newValue: any): void {
+            let index = this.values.indexOf(value);
+            if (index != -1) {
+                this.values[index] = newValue;
+            }
+        }
+
+        public replaceKey(value: any, newKey: any): void {
+            let index = this.values.indexOf(value);
+            if (index != -1) {
+                this.keys[index] = newKey;
+            }
+        }
+
         public remove(key: any, value: any) {
             if (this.keys.indexOf(key) != -1) {
                 if (this.values[this.keys.indexOf(key)] === value) {
@@ -156,6 +170,22 @@ namespace Dictionary {
     //% weight=100
     export function get_keys_list(d: Dictionary): any[] {
         return d.get_keys_list()
+    }
+
+    //% block="%d replace %value with %newValue"
+    //% blockId="replaceValue"
+    //% group="Edit"
+    //% weight=100
+    export function replaceValue(d: Dictionary, value: any, newValue: any): void {
+        d.replaceKey(value, newValue)
+    }
+
+    //% block="%d replace key at %value with %key"
+    //% blockId="replaceKey"
+    //% group="Edit"
+    //% weight=100
+    export function replaceKey(d: Dictionary, value: any, key: any): void {
+        d.replaceKey(value, key)
     }
 
     //% block="%d remove key, value pair %k %v"
