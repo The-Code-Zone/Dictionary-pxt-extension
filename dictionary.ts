@@ -1,4 +1,4 @@
-//% color=#e6e6fa
+//% color=#EEBB00
 //% weight=79
 //% icon="\uf240"
 //% blockGap=8 block="Dictionary"
