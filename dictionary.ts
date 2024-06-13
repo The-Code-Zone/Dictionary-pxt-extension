@@ -3,7 +3,7 @@
 //% icon="\uf240"
 //% blockGap=8 block="Dictionary"
 //% groups='["Create", "Edit", "Retrieve", "String"]'
-namespace Dictionary {
+namespace Dictionary { 
 
     export class Dictionary {
         private keys: any[]
