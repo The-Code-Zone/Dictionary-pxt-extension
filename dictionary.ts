@@ -172,12 +172,12 @@ namespace Dictionary {
         return d.get_keys_list()
     }
 
-    //% block="%d replace %value with %newValue"
+    //% block="%d replace value at %key with %newValue"
     //% blockId="replaceValue"
     //% group="Edit"
     //% weight=100
-    export function replaceValue(d: Dictionary, value: any, newValue: any): void {
-        d.replaceKey(value, newValue)
+    export function replaceValue(d: Dictionary, key: any, newValue: any): void {
+        d.replaceValue(key, newValue)
     }
 
     //% block="%d replace key at %value with %key"
