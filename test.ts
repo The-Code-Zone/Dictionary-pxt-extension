@@ -7,9 +7,9 @@ replaceValue(1,5)
 console.log(mylist)
 
 
-let dict = Dictionary.create(["word"], [1])
-Dictionary.replaceValue(dict, "word", 2)
-console.log(Dictionary.get_values_list(dict))
+let dict = dictionary.create(["word"], [1])
+dictionary.replaceValue(dict, "word", 2)
+console.log(dictionary.get_values_list(dict))
 
 
 function replaceValue(value: any, newValue: any): void {

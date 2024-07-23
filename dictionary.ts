@@ -3,7 +3,7 @@
 //% icon="\uf240"
 //% blockGap=8 block="Dictionary"
 //% groups='["Create", "Edit", "Retrieve", "String"]'
-namespace Dictionary { 
+namespace dictionary { 
 
     export class Dictionary {
         private keys: any[]
@@ -70,17 +70,17 @@ namespace Dictionary {
             }
         }
 
-        public replaceValue(key: any, newValue: any): void {
-            let index = this.keys.indexOf(key);
+        public replaceValue(value: any, newValue: any): void {
+            let index = this.values.indexOf(value);
             if (index != -1) {
                 this.values[index] = newValue;
             }
         }
 
-        public replaceKey(key: any, newKey: any): void {
-            let index = this.keys.indexOf(key);
+        public replaceKey(value: any, newKey: any): void {
+            let index = this.values.indexOf(value);
             if (index != -1) {
-                this.values[index] = newKey;
+                this.keys[index] = newKey;
             }
         }
 
@@ -172,12 +172,12 @@ namespace Dictionary {
         return d.get_keys_list()
     }
 
-    //% block="%d replace value at %key with %newValue"
+    //% block="%d replace %value with %newValue"
     //% blockId="replaceValue"
     //% group="Edit"
     //% weight=100
-    export function replaceValue(d: Dictionary, key: any, newValue: any): void {
-        d.replaceValue(key, newValue)
+    export function replaceValue(d: Dictionary, value: any, newValue: any): void {
+        d.replaceKey(value, newValue)
     }
 
     //% block="%d replace key at %value with %key"
